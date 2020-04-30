@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import axios from 'axios'
 import commonComponents from './components/index.js'
 Vue.config.productionTip = false
 Vue.use(commonComponents)
@@ -11,6 +12,10 @@ Vue.use(commonComponents)
   }
   next()
 })
+//axios设置
+axios.defaults.baseURL = "http://127.0.0.1:3000/";
+//将axios这个对象添加到Vue的原型对象中，在使用的时候就只需要使用this.对象名就可以了
+Vue.prototype.$http = axios
 
 new Vue({
     router,
