@@ -8,9 +8,9 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var dataRouter = require('./routes/data');
 var fs = require('fs');
-
+var history = require('connect-history-api-fallback');
 var app = express();
-
+app.use(history())
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -19,8 +19,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'dist')));
 
 //设置跨域
 app.all("*",function(req,res,next){
@@ -38,10 +38,10 @@ app.all("*",function(req,res,next){
 app.use('/users', usersRouter);
 app.use('/getData1',dataRouter)
 // 因为是单页应用 所有请求都走/dist/index.html
-app.get('*', function(req, res) {
-  const html = fs.readFileSync(path.resolve(__dirname, '../dist'), 'utf-8')
-  res.send(html)
-})
+// app.get('*', function(req, res) {
+//   const html = fs.readFileSync(path.resolve(__dirname, '../dist'), 'utf-8')
+//   res.send(html)
+// })
 // app.use('/', indexRouter);
 
 
