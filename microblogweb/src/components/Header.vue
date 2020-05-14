@@ -1,6 +1,7 @@
 <template>
    <div class="header">
        for person video
+       <Login></Login>
    </div>
 </template>
 

@@ -4,7 +4,8 @@ import Home from './components/Home.vue'
 import HelloWorld from "./components/HelloWorld.vue"
 import PageNotFound from "./views/PageNotFound.vue"
 import Freeman from "./views/Freeman.vue"
-
+import Login from "./views/Login.vue"
+import Register from "./views/Register.vue"
 Vue.use(Router)
 export default new Router({
     mode: 'history',
@@ -12,6 +13,14 @@ export default new Router({
     routes:[
         {
             path:'/',
+            name:'login',
+            component:Login,
+            meta:{
+                title:'login'
+            }
+        },
+        {
+            path:'/home',
             name:'home',
             component:Home,
             meta:{
@@ -34,22 +43,22 @@ export default new Router({
                 title:'freeman'
             }
         },
-        // {
-        //     path:'/login',
-        //     name:'home',
-        //     component:Home,
-        //     meta:{
-        //         title:'home'
-        //     }
-        // },
-        // {
-        //     path:'/',
-        //     name:'home',
-        //     component:Home,
-        //     meta:{
-        //         title:'home'
-        //     }
-        // }
+        {
+            path:'/login',
+            name:'login',
+            component:Login,
+            meta:{
+                title:'login'
+            }
+        },
+        {
+            path:'/register',
+            name:'register',
+            component:Register,
+            meta:{
+                title:'register'
+            }
+        },
         {
             path:'*',
             name:'home',

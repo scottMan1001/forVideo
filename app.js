@@ -35,8 +35,8 @@ app.all("*",function(req,res,next){
   else
       next();
 });
-app.use('/users', usersRouter);
-app.use('/getData1',dataRouter)
+// app.use('/users', usersRouter);
+app.use('/getData',dataRouter)
 // 因为是单页应用 所有请求都走/dist/index.html
 // app.get('*', function(req, res) {
 //   const html = fs.readFileSync(path.resolve(__dirname, '../dist'), 'utf-8')

@@ -3,9 +3,9 @@
    <Header></Header>
   <div id="app">
   
-      <router-link to="/">每日必看</router-link> | &nbsp;&nbsp;
+      <!-- <router-link to="/home">每日必看</router-link> | &nbsp;&nbsp;
      <router-link to="/hello">精品推荐</router-link> | &nbsp;&nbsp;
-      <router-link to="/freeman">freeman</router-link>
+      <router-link to="/freeman">freeman</router-link> -->
     <router-view/>
   
     <!-- <img alt="Vue logo" src="./assets/logo.png">

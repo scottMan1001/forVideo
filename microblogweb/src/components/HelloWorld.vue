@@ -1,42 +1,39 @@
 <template>
-  <div class="hello main">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+  <div oncontextmenu="return false">
+    <h1>富贵提供资源</h1>
+    <video id="videoId" controlslist="nodownload" ref='video' controls="true" height="500" width="auto" download="false"></video>
   </div>
 </template>
 
 <script>
+import flvjs from "flv.js";
 export default {
-  name: 'HelloWorld',
+  name: "HelloWorld",
   props: {
     msg: String
+  },
+  created(){
+     
+  },
+  mounted() {
+    if (flvjs.isSupported()) {
+      var videoElement = document.getElementById("videoId");
+   
+      this.$refs.video["disablePictureInPicture"]=true;
+
+      console.log("++++++++++++");
+      console.log(flvjs);
+      var flvPlayer = flvjs.createPlayer({
+        type: "mp4",
+        url: "http://127.0.0.1:3000/media/test_1.mp4"
+      });
+      flvPlayer.attachMediaElement(videoElement);
+      flvPlayer.load();
+
+     
+    }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -55,4 +52,5 @@ li {
 a {
   color: #42b983;
 }
+
 </style>

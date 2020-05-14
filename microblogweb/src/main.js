@@ -1,10 +1,12 @@
 import Vue from 'vue'
+import flvjs from 'flv.js'
 import App from './App.vue'
 import router from './router'
 import axios from 'axios'
 import commonComponents from './components/index.js'
 Vue.config.productionTip = false
 Vue.use(commonComponents)
+Vue.use(flvjs)
  /* 路由发生变化修改页面title */
  router.beforeEach((to, from, next) => {
   if (to.meta.title) {
