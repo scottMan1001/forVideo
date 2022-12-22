@@ -48,7 +48,7 @@ app.get("/weixin", (req, res, next) => {
   const qs = require("querystring");
   let search_key = {
     appid: "wx281eb244c69c9b2a",
-    secret: "7bb59c1d1247150a30fc1fa8e50068aa",
+    secret: "",
     js_code: req.query.code,
     grant_type: "authorization_code",
   };
