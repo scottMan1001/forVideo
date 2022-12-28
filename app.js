@@ -58,10 +58,11 @@ app.get("/weixin", (req, res, next) => {
     path: "/sns/jscode2session?" + search_key,
     method: "GET",
   };
-  const url = "https://api.weixin.qq.com/sns/jscode2session?" + search_key;
   service.getApiFromWx(body_request, function (err, content) {
     if (err) return next(err);
-    res.send(content);
+    const { openid } = JSON.parse(content);
+    console.log("loginuser sessionkey&openid==>", content);
+    res.json({ openid });
   });
 });
 
@@ -72,7 +73,7 @@ app.use("/fileVideo", fileRouter);
 //   const html = fs.readFileSync(path.resolve(__dirname, '../dist'), 'utf-8')
 //   res.send(html)
 // })
-// app.use('/', indexRouter);
+// app.use("/", indexRouter);
 
 // catch 404 and forward to error handler
 
