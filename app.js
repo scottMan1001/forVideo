@@ -60,8 +60,9 @@ app.get("/weixin", (req, res, next) => {
   };
   service.getApiFromWx(body_request, function (err, content) {
     if (err) return next(err);
+    const { openid } = JSON.parse(content);
     console.log("loginuser sessionkey&openid==>", content);
-    res.send(content);
+    res.json({ openid });
   });
 });
 
